@@ -32,7 +32,7 @@ All of this is the same general approach taken in the ASA paper. The key differe
 
 This section explains and gives brief justifications for some of the modelling assumptions. It is not intended to cover everything in the code, which is comprehensively commented:
 
-[nrfu.R](nruf.R)
+[nrfu.R](nrfu.R)
 
 ### Enumeration progress model
 
