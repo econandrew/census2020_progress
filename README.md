@@ -1,8 +1,8 @@
 # Model of 2020 census deadline: September 30 versus October 31
 
-This repository contains code and data supporting my _New York Times_ opinion piece with Gus Wezerek (September 23, 2020). The model is based on Jonathan Auerbach and Steve Pierson's American Statistical Association [Technical Report](https://www.amstat.org/asa/files/pdfs/POL-2020%20Census%20Deadline%20Extension.pdf) (September 17, 2020, hereafter "the ASA model/paper/authors"). Although I outline the general model here, it would be helpful to read this with a copy of that paper to hand.
+**Note: this is the working branch. To see the data and model frozen at the time of online publication of the opinion piece, go to the [master branch](https://github.com/econandrew/census2020_progress)**
 
-The master branch of this repository will be frozen at the point of publication. Future updates will be on another branch (linked here if and when it exists).
+This repository contains code and data supporting my _New York Times_ opinion piece with Gus Wezerek (September 23, 2020). The model is based on Jonathan Auerbach and Steve Pierson's American Statistical Association [Technical Report](https://www.amstat.org/asa/files/pdfs/POL-2020%20Census%20Deadline%20Extension.pdf) (September 17, 2020, hereafter "the ASA model/paper/authors"). Although I outline the general model here, it would be helpful to read this with a copy of that paper to hand.
 
 For questions, contact me@andrewwwhitby.id.au.
 
@@ -33,6 +33,15 @@ All of this is the same general approach taken in the ASA paper. The key differe
 This section explains and gives brief justifications for some of the modelling assumptions. It is not intended to cover everything in the code, which is comprehensively commented:
 
 [nrfu.R](nruf.R)
+
+### Change log since original online publication (September 23)
+
+* Add Alabama to the group of states with minor outlier treatment
+* New data for September 19 through 23 (report dates Sep 20 through 24)
+
+The distribution of cumulative states forecast errors by day is here:
+
+![Cumulative forecast errors by state, online publication](/outputs/plt_forecast_error.png)
 
 ### Enumeration progress model
 

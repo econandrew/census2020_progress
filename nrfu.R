@@ -328,7 +328,7 @@ progress_model_data <- progress %>%
   mutate(outlier = (
     daily_increment > 1.5 |
     (state %in% c("Alaska", "Arizona", "Mississippi", "Louisiana") & lag_unresolved > 15) |
-    (state %in% c("Georgia") & lag_unresolved > 20)
+    (state %in% c("Georgia", "Alabama") & lag_unresolved > 20)
   )) 
 
 plt_increments_v_unresolved <- progress_model_data %>%
@@ -513,6 +513,38 @@ progress_forecast %>%
   mutate(state = fct_reorder(state, unresolved, first)) %>%
   pivot_wider(names_from = as_of_date, values_from = unresolved) %>%
   write_csv("outputs/plt_unresolved.csv")
+
+############################################################################## #
+# Compare model with latest data against original Sep 23 publication (Sep 18 data)
+################################################################################
+
+# We can check the current point-in-time latest-data forecast against the numbers
+# we used in the online publication, to see how we're going.
+
+forecast_sep23_vintage <-
+  read_csv("inputs/frozen_outputs/plt_progress_proj_final_nyt_online_Sep23.csv")
+
+vintage_comparison <- progress_forecast %>%
+  left_join(forecast_sep23_vintage, by = c("state", "as_of_date"), suffix = c("", "_sep18"))
+
+state_forecast_error <- vintage_comparison %>%
+  filter(type == "observation", type_sep18 == "forecast") %>%
+  mutate(err = enumerated - enumerated_sep18)
+
+plt_forecast_error <- ggplot(state_forecast_error, aes(x = err)) +
+  geom_histogram(binwidth = 0.05) +
+  facet_wrap(~ as_of_date) +
+  geom_vline(xintercept = 0, color = "black") +
+  geom_vline(
+    data = . %>% group_by(as_of_date) %>% summarize(err_med = median(err)),
+    aes(xintercept = err_med),
+    color = "blue"
+  ) +
+  labs(title = "Distribution of forecast errors by state since online pub (cumulative enumerated, blue = median)")
+
+plot_device(paste0("outputs/plt_forecast_error", plot_ext), units = "in", width = 12, height = 8)
+plt_forecast_error
+dev.off()
 
 ############################################################################## #
 # Translate progress into undercounts (!= ASA paper)
