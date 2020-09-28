@@ -36,6 +36,8 @@ This section explains and gives brief justifications for some of the modelling a
 
 ### Change log since original online publication (September 23)
 
+* Tidied up unresolved plot
+* New data for September 24 through 27 (report dates Sep 25 through 28)
 * Add Alabama to the group of states with minor outlier treatment
 * New data for September 19 through 23 (report dates Sep 20 through 24)
 
