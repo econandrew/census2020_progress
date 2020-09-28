@@ -2,7 +2,7 @@
 
 This repository contains code and data supporting my _New York Times_ opinion piece with Gus Wezerek (September 23, 2020). The model is based on Jonathan Auerbach and Steve Pierson's American Statistical Association [Technical Report](https://www.amstat.org/asa/files/pdfs/POL-2020%20Census%20Deadline%20Extension.pdf) (September 17, 2020, hereafter "the ASA model/paper/authors"). Although I outline the general model here, it would be helpful to read this with a copy of that paper to hand.
 
-The master branch of this repository will be frozen at the point of publication. Future updates will be on another branch (linked here if and when it exists).
+The master branch of this repository reflects the model and data at the point of publication of the online piece. To see the model update for the print publication of September 27, go to the [print](https://github.com/econandrew/census2020_progress/tree/print) branch.
 
 For questions, contact me@andrewwwhitby.id.au.
 
