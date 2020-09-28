@@ -1,6 +1,6 @@
 # Model of 2020 census deadline: September 30 versus October 31
 
-**Note: this is the working branch. To see the data and model frozen at the time of online publication of the opinion piece, go to the [master branch](https://github.com/econandrew/census2020_progress)**
+**Note: this branch contains the model update for the print piece that ran on September 27 under the heading "Trump's Truncated Census." To see the data and model at the time of online publication of the opinion piece, go to the [master branch](https://github.com/econandrew/census2020_progress)**
 
 This repository contains code and data supporting my _New York Times_ opinion piece with Gus Wezerek (September 23, 2020). The model is based on Jonathan Auerbach and Steve Pierson's American Statistical Association [Technical Report](https://www.amstat.org/asa/files/pdfs/POL-2020%20Census%20Deadline%20Extension.pdf) (September 17, 2020, hereafter "the ASA model/paper/authors"). Although I outline the general model here, it would be helpful to read this with a copy of that paper to hand.
 
