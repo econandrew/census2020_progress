@@ -20,6 +20,7 @@ plot_ext <- ".png"
 
 aug31 <- as.Date("2020-08-31")
 sep30 <- as.Date("2020-09-30")
+oct5 <- as.Date("2020-10-05")
 oct31 <- as.Date("2020-10-31")
 
 ############################################################################## #
@@ -483,21 +484,26 @@ progress_forecast %>%
 
 # A bar chart of unresolved housing units
 plt_unresolved <- progress_forecast %>%
-  filter(as_of_date %in% c(sep30, as.Date("2020-10-15"), oct31)) %>%
+  filter(as_of_date %in% c(sep30, oct5, as.Date("2020-10-15"), oct31)) %>%
   mutate(state = fct_reorder(state, unresolved, first)) %>%
   ggplot() +
     aes(state, unresolved) +
     geom_col() +
     scale_y_continuous(expand = expansion(add = c(0, 1.5)), breaks = c(0,0.5,1:4)) +
     coord_flip() +
-    facet_wrap(~ as_of_date, labeller = labeller(as_of_date = partial(format.Date, format = "%b %d"))) +
+    facet_grid(
+      (state != "U.S. Total") ~ as_of_date,
+      labeller = labeller(as_of_date = partial(format.Date, format = "%b %d")),
+      scales = "free_y", space = "free_y"
+    ) +
     geom_hline(yintercept = 0.5, color = "red", linetype = 3) +
     geom_hline(yintercept = 1, color="red", linetype = 1) +
     ylab("Unresolved housing units (%)") +
     theme(
       panel.grid.major.y = element_blank(),
       axis.title.y = element_blank(),
-      panel.grid.minor.x = element_blank()
+      panel.grid.minor.x = element_blank(),
+      strip.text.y = element_blank()
     ) + labs(
       title = "Proportion of housing units projected to remain unenumerated (unresolved) at different end dates."
     )
