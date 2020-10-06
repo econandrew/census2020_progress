@@ -324,12 +324,14 @@ progress <- progress %>%
 # in these cases you can also see some trend breaks that justify it:
 # e.g Alaska - very high increments when 20-30% unresolved, probably still RA enumeration ongoing
 #     southern states - some slow starts, reportedly due to covid
+# Update: the final days progress for Alabama is so extreme we can't fit it any more
 progress_model_data <- progress %>% 
   filter(!is.na(daily_increment)) %>% # first day, so no lagged variable possible
   mutate(outlier = (
     daily_increment > 1.5 |
-    (state %in% c("Alaska", "Arizona", "Mississippi", "Louisiana") & lag_unresolved > 15) |
-    (state %in% c("Georgia", "Alabama") & lag_unresolved > 20)
+    (state %in% c("Alabama") & (lag_unresolved < 4 | lag_unresolved > 20)) | 
+    (state %in% c("Alaska", "Arizona", "Mississippi", "Louisiana", "Wyoming") & lag_unresolved > 15) |
+    (state %in% c("Georgia") & lag_unresolved > 20)
   )) 
 
 plt_increments_v_unresolved <- progress_model_data %>%
